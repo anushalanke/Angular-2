@@ -1,0 +1,13 @@
+<div class="members-screen">
+    <div class="members-screen__heading-container">
+        <h2 class="members-screen__heading">{{membersScreenHeading}}</h2>
+
+        <ul class="members-screen__switch-tab">
+            <li class="members-screen__switch-tab-list" *ngFor="let item of membersScreenSwitchTabs"
+                routerLinkActive="members-screen__switch-tab-list--active"
+                [routerLink]="item.link" [routerLinkActiveOptions]="{exact: true}" (click)="showPlusIcon(item.label)">{{item.label}}</li>
+        </ul>
+        <i class="icon-add-plus members-screen__add-plus-icon" *ngIf="plusIcon" (click)="event.createNewTab()"></i>
+    </div>
+</div>
+<router-outlet></router-outlet>

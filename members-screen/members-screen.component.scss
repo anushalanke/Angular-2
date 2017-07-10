@@ -1,0 +1,43 @@
+@import '../../../styles/screen-core';
+@import '../../../styles/variables';
+
+.members-screen {
+    &__heading-container {
+        padding-bottom: 30px;
+    }
+
+    &__heading {
+        @include screen-heading();
+    }
+
+    &__switch-tab {
+        @include screen-switch-tab-container();
+    }
+
+    &__switch-tab-list {
+        @include screen-switch-tab-element-list();
+
+        &:first-child {
+            @include screen-switch-tab-first-element();
+        }
+
+        &:last-child {
+            @include screen-switch-tab-last-element();
+        }
+
+        &--active {
+            @include screen-switch-tab-active-element();
+        }
+    }
+
+    &__add-plus-icon {
+        background: $screen-switch-active-tab-color;
+        border-radius: 3px;
+        color: $white;
+        cursor: pointer;
+        display: inline;
+        margin-left: 15px;
+        padding: 6px;
+    }
+}
+
