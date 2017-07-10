@@ -1,0 +1,11 @@
+<div class="csn-tabs">
+    <md-tab-group [(selectedIndex)]="selectedIndex">
+        <md-tab *ngFor="let tab of tabs; let i = index;">
+            <ng-template md-tab-label>
+                {{tab.tabTitle}}
+                <i class="icon-tabclose" *ngIf="i !== 0" (click)="closeTab(i)"></i>
+            </ng-template>
+            <ng-template *ngTemplateOutlet="tab.template"></ng-template>
+        </md-tab>
+    </md-tab-group>
+</div>
