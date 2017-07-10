@@ -1,0 +1,16 @@
+<div class="field-counter-input">
+    <label class="field-counter-input__label">{{label}}</label>
+    <div class="field-counter-input__wrapper-container">
+        <input #inputElement [ngClass]="{'field-counter-input__input--error' : showErrors && formControl.errors}"
+               type="text" title="{{label}}" class="field-counter-input__input" [(ngModel)]="value"
+               [disabled]="disabled" (ngModelChange)="onChanged($event)" (focus)="onFocus()" (blur)="onBlur()"
+               (keydown)="checkKeyEventForClear($event)"/>
+        <i class="field-counter-input__icon icon-arrow-up" (click)="incrementCounter()"></i>
+        <i class="field-counter-input__icon icon-arrow-down" (click)="decrementCounter()"></i>
+        <i class="field-counter-input__icon icon-delete" *ngIf="showClearIcon" (click)="onChanged(null)"></i>
+    </div>
+    <csn-field-error [ngClass]="{'field-counter-input__error--hidden' : !showErrors}" [errorMessages]="errorMessages"
+                     [control]="formControl"></csn-field-error>
+    <csn-field-hint [ngClass]="{'field-counter-input__hint--hidden' : showErrors && formControl.errors}"
+                    [hintMessage]="hintMessage"></csn-field-hint>
+</div>

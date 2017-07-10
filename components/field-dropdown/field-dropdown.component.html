@@ -1,0 +1,20 @@
+<div class="field-dropdown" [ngClass]="{'field-dropdown--disabled': disabled}">
+    <label class="field-dropdown__label">{{label}}</label>
+    <div class="field-dropdown__wrapper">
+        <i class="icon-arrow-down"></i>
+        <ng-select
+            #inputElement
+            [ngClass]="{'field-dropdown--error' : showErrors && formControl.errors}"
+            [(ngModel)]="value"
+            class="field-dropdown__select"
+            (selected)="checkSelectedItem($event.value)"
+            (deselected)="clear($event)"
+            [options]="preparedOptions"
+            [disabled] = "disabled"
+            (keydown)="checkKeyEventForClear($event)"
+            [allowClear]="true">
+        </ng-select>
+    </div>
+    <csn-field-error [ngClass]="{'field-dropdown__error--hidden' : !showErrors}" [errorMessages]="errorMessages" [control]="formControl"></csn-field-error>
+    <csn-field-hint [ngClass]="{'field-dropdown__hint--hidden' : showErrors && formControl.errors}"  [hintMessage]="hintMessage"></csn-field-hint>
+</div>

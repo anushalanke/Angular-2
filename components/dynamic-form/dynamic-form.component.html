@@ -1,0 +1,74 @@
+<div class="dynamic-form">
+    <form csnForm [formGroup]="form" (onSubmit)="submit($event)">
+        <div class="row">
+            <div *ngFor="let field of fields"
+                 class="
+                    {{fieldStyles[field.key] && fieldStyles[field.key].xs ? 'col-xs-' + fieldStyles[field.key].xs : 'col-xs-12'}}
+                    {{fieldStyles[field.key] && fieldStyles[field.key].sm ? 'col-sm-' + fieldStyles[field.key].sm : ''}}
+                    {{fieldStyles[field.key] && fieldStyles[field.key].md ? 'col-md-' + fieldStyles[field.key].md : ''}}
+                    {{fieldStyles[field.key] && fieldStyles[field.key].lg ? 'col-lg-' + fieldStyles[field.key].lg : ''}}
+                ">
+                <div [ngSwitch]="field.fieldType">
+                    <div *ngSwitchCase="'FIELD_INPUT_TEXT'">
+                        <csn-field-input-text #fieldComponent [label]="field.label" [formControlName]="field.key"
+                            [formControl]="form.controls[field.key]" [errorMessages]="field.errorMessages"
+                            [hintMessage]="field.hintMessage">
+                        </csn-field-input-text>
+                    </div>
+                    <div *ngSwitchCase="'FIELD_TEXTAREA'">
+                        <csn-field-textarea #fieldComponent [label]="field.label" [formControlName]="field.key"
+                            [formControl]="form.controls[field.key]" [errorMessages]="field.errorMessages"
+                            [hintMessage]="field.hintMessage">
+                        </csn-field-textarea>
+                    </div>
+                    <div *ngSwitchCase="'FIELD_DROPDOWN'">
+                        <csn-field-dropdown #fieldComponent [label]="field.label" [formControlName]="field.key"
+                            [formControl]="form.controls[field.key]" [errorMessages]="field.errorMessages"
+                            [hintMessage]="field.hintMessage">
+                        </csn-field-dropdown>
+                    </div>
+                    <div *ngSwitchCase="'FIELD_DATEPICKER'">
+                        <csn-field-datepicker #fieldComponent [label]="field.label" [formControlName]="field.key"
+                            [formControl]="form.controls[field.key]" [errorMessages]="field.errorMessages"
+                            [hintMessage]="field.hintMessage">
+                        </csn-field-datepicker>
+                    </div>
+                    <div *ngSwitchCase="'FIELD_CHECKBOX'">
+                        <md-checkbox [formControlName]="field.key">{{field.label}}</md-checkbox>
+                    </div>
+                    <div *ngSwitchCase="'FIELD_MEMBER_GENDER'">
+                        <csn-member-gender-dropdown #fieldComponent [label]="field.label" [formControlName]="field.key"
+                            [formControl]="form.controls[field.key]" [errorMessages]="field.errorMessages"
+                            [hintMessage]="field.hintMessage">
+                        </csn-member-gender-dropdown>
+                    </div>
+                    <div *ngSwitchCase="'FIELD_MEMBER_STATE'">
+                        <csn-member-state-dropdown #fieldComponent [label]="field.label" [formControlName]="field.key"
+                            [formControl]="form.controls[field.key]" [errorMessages]="field.errorMessages"
+                            [hintMessage]="field.hintMessage">
+                        </csn-member-state-dropdown>
+                    </div>
+                    <div *ngSwitchCase="'FIELD_PROVIDER_SPECIALTY'">
+                        <csn-provider-specialty-dropdown #fieldComponent [formControlName]="field.key"
+                            [formControl]="form.controls[field.key]" [errorMessages]="field.errorMessages"
+                            [hintMessage]="field.hintMessage">
+                        </csn-provider-specialty-dropdown>
+                    </div>
+                    <div *ngSwitchCase="'FIELD_PROVIDER_STATE'">
+                        <csn-provider-state-dropdown #fieldComponent [formControlName]="field.key"
+                            [formControl]="form.controls[field.key]" [errorMessages]="field.errorMessages"
+                            [hintMessage]="field.hintMessage">
+                        </csn-provider-state-dropdown>
+                    </div>
+                </div>
+            </div>
+            <ng-content select="[csn-df-custom-element]"></ng-content>
+        </div>
+        <div class="row">
+            <div class="col-xs-12">
+                <button md-button>Submit</button>
+                <csn-form-error message="Something is wrong" [form]="form"></csn-form-error>
+            </div>
+        </div>
+    </form>
+</div>

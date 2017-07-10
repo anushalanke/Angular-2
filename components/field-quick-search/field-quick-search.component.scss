@@ -1,0 +1,58 @@
+@import '../../../styles/field-core';
+
+.field-quick-search {
+    display: block;
+    position: relative;
+    width: 100%;
+
+    ::placeholder {
+        color: #999;
+        font-size: 1.2rem;
+    }
+
+    &__input {
+        background-color: #fcfcfa;
+        border: 1px solid #c0c0b2;
+        border-radius: 40px;
+        box-sizing: border-box;
+        font-size: 1.2rem;
+        padding: 4px 30px 3px;
+        width: 100%;
+
+        &:focus {
+            background-color: #fcfcfa;
+            border: 1px solid #38bcd0;
+            color: #323843;
+            cursor: pointer;
+            outline: none;
+        }
+    }
+
+    &__icon {
+        background-size: contain;
+        position: absolute;
+    }
+
+    .icon-delete {
+        color: #666;
+        cursor: pointer;
+        font-size: 10px;
+        left: auto;
+        right: 10px;
+        top: 6px;
+    }
+
+    .icon-search {
+        color: #c1c1a7;
+        left: 5px;
+        top: 3px;
+    }
+
+    &__search-icon--active {
+        .icon-search {
+            color: #38bcd0;
+        }
+    }
+}
+
+

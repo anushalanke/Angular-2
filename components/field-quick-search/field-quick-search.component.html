@@ -1,0 +1,6 @@
+<div class="field-quick-search" [ngClass]="{'field-quick-search__search-icon--active':isFocused}">
+    <i class="field-quick-search__icon icon-search"></i>
+    <input type="text" class="field-quick-search__input" [(ngModel)]="value" (keydown)="onChange($event)"
+           (focus)="onFocus()" (blur)="onBlur()" placeholder="Quick Search"/>
+    <span [hidden]="!isActive"><i class="field-quick-search__icon icon-delete" (click)="clearText()"></i></span>
+</div>

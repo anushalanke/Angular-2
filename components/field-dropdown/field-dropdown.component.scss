@@ -1,0 +1,48 @@
+@import '../../../styles/field-core';
+@import '../../../styles/variables';
+
+.field-dropdown {
+    @include field-container();
+    overflow: visible;
+
+    &__error {
+        @include field-hint-error-hidden();
+    }
+
+    &__hint {
+        @include field-hint-error-hidden();
+    }
+
+    &__select {
+        @include field-input();
+        height: 25px;
+        margin-bottom: 8px;
+    }
+
+    &__label {
+        @include field-label();
+    }
+
+    &__wrapper {
+        background-color: $dropdown-white;
+        position: relative;
+
+
+        .icon-arrow-down {
+            color: $clear-toggle-enabled;
+            font-size: 10px;
+            position: absolute;
+            right: 4px;
+            top: 7px;
+        }
+    }
+
+    &--disabled .icon-arrow-down {
+        color: $toggle-disabled;
+        z-index: 3;
+    }
+}
+
+.field-dropdown__wrapper ng-select.field-dropdown__dropdown--error.below {
+    border: 1px solid red;
+}
